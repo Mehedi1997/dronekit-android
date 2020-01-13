@@ -1,13 +1,15 @@
 package com.o3dr.services.android.lib.gcs.returnToMe;
 
 import android.os.Parcel;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import com.o3dr.services.android.lib.coordinate.LatLongAlt;
 import com.o3dr.services.android.lib.drone.property.DroneAttribute;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+
+import androidx.annotation.IntDef;
 
 /**
  * Created by Fredia Huya-Kouadio on 9/22/15.

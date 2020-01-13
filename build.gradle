@@ -6,11 +6,12 @@ buildscript {
 
         android_build_sdk_version = 29
         android_build_tools_version = '29.0.1'
-        android_build_target_sdk_version = 22
-        android_build_min_sdk_version = 14
+        android_build_target_sdk_version = 29
+        android_build_min_sdk_version = 19
     }
 
     repositories {
+        google()
         jcenter()
     }
 
@@ -18,7 +19,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.5.0'
 
         //Dexcount gradle plugin
-        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.4.4'
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:1.0.2'
     }
 }
 
@@ -104,6 +105,7 @@ subprojects {
 
 allprojects {
     repositories {
+        google()
         jcenter()
 
         maven {

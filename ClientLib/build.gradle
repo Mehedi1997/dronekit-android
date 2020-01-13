@@ -67,10 +67,9 @@ android {
     }
 
     android.libraryVariants.all { variant ->
-        variant.outputs.each { output ->
-            def file = output.outputFile
-            if (file != null && file.name.endsWith('.aar')) {
-                output.outputFile = new File(file.parent, "${PUBLISH_ARTIFACT_ID}.${PUBLISH_VERSION}.aar")
+        variant.outputs.all { output ->
+            if (outputFileName != null && outputFileName.endsWith('.aar')) {
+                outputFileName = new File("${PUBLISH_ARTIFACT_ID}.${PUBLISH_VERSION}.aar")
             }
         }
     }
@@ -98,29 +97,29 @@ android {
 }
 
 dependencies {
-    compile 'com.jakewharton.timber:timber:3.1.0'
+    api 'com.jakewharton.timber:timber:4.7.1'
 
-    compile "com.google.android.gms:play-services-base:${play_services_version}"
-    compile "com.google.android.gms:play-services-location:${play_services_version}"
+    api "com.google.android.gms:play-services-base:${play_services_version}"
+    api "com.google.android.gms:play-services-location:${play_services_version}"
 
     //Java semver library
-    compile 'com.github.zafarkhaja:java-semver:0.9.0'
+    api 'com.github.zafarkhaja:java-semver:0.9.0'
 
-    compile 'com.jcraft:jsch:0.1.51'
+    api 'com.jcraft:jsch:0.1.51'
 
     //MP4 generation library
-    compile 'com.googlecode.mp4parser:isoparser:1.1.7'
+    api 'com.googlecode.mp4parser:isoparser:1.1.7'
 
-    compile 'org.droidplanner.android:usb-serial-android:0.1.0'
+    api 'org.droidplanner.android:usb-serial-android:0.1.0'
 
-    debugCompile project(':Mavlink')
+    //debugApi project(':Mavlink')
 //    sitlCompile project(':Mavlink')
 
-    compile files('libs/Mavlink.jar')
-    compile files('libs/d2xx.jar')
+    implementation files('libs/Mavlink.jar')
+    implementation files('libs/d2xx.jar')
 
-    androidTestCompile 'junit:junit:4.12'
-    androidTestCompile "org.robolectric:robolectric:3.0"
+    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation "org.robolectric:robolectric:4.2.1"
 }
 
 def getSoloLinkIp() {
