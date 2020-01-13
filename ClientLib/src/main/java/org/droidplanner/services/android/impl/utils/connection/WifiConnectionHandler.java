@@ -99,9 +99,11 @@ public class WifiConnectionHandler {
 
                     switch (networkState) {
                         case CONNECTED:
-                            final WifiInfo wifiInfo = intent.getParcelableExtra(WifiManager.EXTRA_WIFI_INFO);
+                            final WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                            final WifiInfo wifiInfo = wifiManager.getConnectionInfo();
                             final String wifiSSID = wifiInfo.getSSID();
-                            Timber.i("Connected to " + wifiSSID);
+
+                            Timber.i("Connected to %s", wifiSSID);
 
                             final DhcpInfo dhcpInfo = wifiMgr.getDhcpInfo();
                             if (dhcpInfo != null) {
